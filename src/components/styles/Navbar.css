@@ -1,0 +1,82 @@
+
+/* Navbar Class
+__________________________________________*/
+
+	.Navbar {
+
+		/*Colores*/
+		background-color: #1b2127;
+		color: white;
+
+		/*Modelo de Caja*/
+		min-width: 20vw;
+		max-width: 250px;
+		padding: 20px;
+		height: 100vh;
+
+		/*Ornamentos*/
+		position: fixed;
+		top: 0px;
+
+		z-index: 100;
+
+	}
+
+	.Navbar.hidden {
+		
+		/*Colores*/
+		background-color: transparent;	
+		height: auto;
+		width: auto;
+	}
+
+	.Navbar.visible {
+		animation: enterNavbar 1s;		
+	}
+
+	.Navbar .logo h1 {
+		font-size: 200%;
+	}
+
+.Navbar .logo {
+	max-height: 20vh;
+	max-width: 80%;
+}
+
+	.Navbar .menu {
+		max-height: 20vh;	
+		max-width: 80%;
+	}
+
+	.Navbar .menu ul {
+
+	}	
+
+	.Navbar a {
+		color: white;
+		text-decoration: none;
+	}
+
+	.Navbar .menu li {
+
+		list-style-type: none;
+		height: inherit;
+
+	}
+
+	.Navbar .menu li a {
+		height: inherit;
+	
+		color: white;
+		text-decoration: unset;
+	}
+
+
+	@keyframes enterNavbar {
+		from {
+			transform: translateX(-300px);
+		}
+		to {
+			transform: translateX(00px);
+		}
+	}
