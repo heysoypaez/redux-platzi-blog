@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-
+import { connect } from "react-redux";
+import * as usersAction from "../actions/usersAction.js";
 
  class Users extends Component {
 
-
-  state = {
+/*
+  props = {
 
     users: [],
     loading: false,
     error: null
   }
+*/
 
-  fetchUsers = async () => {
+
+  fetchUsers =  async () => {
+
 
     try {
 
@@ -20,17 +24,15 @@ import React, { Component } from 'react';
 
     this.setState({users: response })
     
-    console.log(this.state)      
     } 
     catch(error) {
 
     }
-
   }
 
   pushRows = () => (
 
-    this.state.users.map( (user) => (
+    this.props.users.map( (user) => (
 
       <tr key={user.id}>
         <td>{user.name}</td>
@@ -44,12 +46,15 @@ import React, { Component } from 'react';
 
   componentDidMount = () => {
 
-    this.fetchUsers()
+    //this.fetchUsers()
   }
 
 
 
   render() {
+
+      console.log(this.props)
+
       return (
         <section className="Users">
           <h1>Heysoypaez here</h1>
@@ -73,4 +78,12 @@ import React, { Component } from 'react';
     }
 }
 
-export default Users;
+const mapStateToProps = (reducers) => {
+
+  return reducers.usersReducer;
+
+}
+
+export default connect(mapStateToProps, usersAction )(Users);
+
+
