@@ -4,35 +4,9 @@ import * as usersAction from "../actions/usersAction.js";
 
  class Users extends Component {
 
-/*
-  props = {
-
-    users: [],
-    loading: false,
-    error: null
-  }
-*/
-
-
-  fetchUsers =  async () => {
-
-
-    try {
-
-    const users = await fetch("https://jsonplaceholder.typicode.com/users")
-    const response = await users.json()
-
-    this.setState({users: response })
-    
-    } 
-    catch(error) {
-
-    }
-  }
-
   pushRows = () => (
 
-    this.props.users.map( (user) => (
+    this.props.users.map( (user, index) => (
 
       <tr key={user.id}>
         <td>{user.name}</td>
@@ -45,11 +19,8 @@ import * as usersAction from "../actions/usersAction.js";
   )
 
   componentDidMount = () => {
-
-    //this.fetchUsers()
+    this.props.getAll();
   }
-
-
 
   render() {
 
@@ -57,8 +28,11 @@ import * as usersAction from "../actions/usersAction.js";
 
       return (
         <section className="Users">
-          <h1>Heysoypaez here</h1>
   
+          {
+            (this.props.users.length === 0) ?
+            <h2>Cargando...</h2>
+            :  
           <table>
             <thead>
              <tr>
@@ -69,21 +43,17 @@ import * as usersAction from "../actions/usersAction.js";
             </thead>
   
             <tbody>
-              {this.pushRows()}
+            {this.pushRows()} 
             </tbody>
-  
           </table>
+          }
         </section>
       );
     }
 }
 
 const mapStateToProps = (reducers) => {
-
   return reducers.usersReducer;
-
 }
 
 export default connect(mapStateToProps, usersAction )(Users);
-
-

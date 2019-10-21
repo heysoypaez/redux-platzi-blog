@@ -20,6 +20,7 @@ class App extends Component {
           		<Route exact path="/" component={Users} />
               <Route exact path="/tareas" component={Tasks} />
               <Route exact path="/usuarios" component={Users} />
+              <Route exact path="/users" component={Users} />
           	</Switch>	
 
           </BrowserRouter>

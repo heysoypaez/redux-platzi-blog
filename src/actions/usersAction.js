@@ -1,15 +1,8 @@
 
-
 export const getAll = () => (
-
-	(dispatch) => {
-		dispatch({
-			type: "get_users",
-			payload: [1,2,3]
-		})
+	async (dispatch) => {
+		const users = await fetch("https://jsonplaceholder.typicode.com/users")
+		const response = await users.json()
+		dispatch({ type: "get_users", payload: response })
 	}
 )
-
-
-
-  

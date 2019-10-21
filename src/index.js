@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-
-import reducers from "./reducers/index.js"
+import reduxThunk from "redux-thunk";
+import reducers from "./reducers/index.js";
 
 const store = createStore(
 
 	reducers, //all reducers	
-	{} //initial state
+	{}, //initial state
+	applyMiddleware(reduxThunk)
 );
 
 ReactDOM.render(
